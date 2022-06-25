@@ -26,6 +26,8 @@ const Main = () => {
       <Card></Card>
       <Card></Card>
       <Card></Card>
+      <Card></Card>
+      <Card></Card>
     </div>
   );
 };
