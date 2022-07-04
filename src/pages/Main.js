@@ -1,33 +1,11 @@
 import React from "react";
 import Card from "../component/Card";
-const Main = () => {
+const Main = ({ items }) => {
   return (
     <div className="items-container">
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
+      {items.map((item) => (
+        <Card item={item}></Card>
+      ))}
     </div>
   );
 };
