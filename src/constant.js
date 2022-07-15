@@ -7,4 +7,13 @@ export const products = [
   { name: "salmon", price: 25, image: "", category: [] },
   { name: "butter", price: 1, image: "", category: [] },
 ];
-export const category = ["shirts", "jeans", "leggins", "bags", "jewelry"];
+export const category = [
+  "shirts",
+  "jeans",
+  "leggins",
+  "bags",
+  "jewelry",
+  "men's clothing",
+  "jewelery",
+  "electronics",
+];

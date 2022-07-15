@@ -2,11 +2,11 @@ import React from "react";
 import Searchbar from "./Searchbar";
 import { FaCartPlus } from "react-icons/fa";
 
-const Navbar = ({ func }) => {
+const Navbar = ({ func, showCart }) => {
   return (
     <div className="navbar">
       <Searchbar function={func}></Searchbar>
-      <div className="cart">
+      <div className="cart-icon" onClick={showCart}>
         <FaCartPlus color="white" size={30}></FaCartPlus>
       </div>
     </div>
