@@ -1,13 +1,17 @@
 import React from "react";
 import Searchbar from "./Searchbar";
-import { FaCartPlus } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const Navbar = ({ func, showCart }) => {
+const Navbar = ({ func, showCart, cartQuantity }) => {
   return (
     <div className="navbar">
       <Searchbar function={func}></Searchbar>
-      <div className="cart-icon" onClick={showCart}>
-        <FaCartPlus color="white" size={30}></FaCartPlus>
+      <div
+        className="cart-icon"
+        onClick={showCart}
+        data-qty={cartQuantity.length}
+      >
+        <AiOutlineShoppingCart color="white" size={30}></AiOutlineShoppingCart>
       </div>
     </div>
   );

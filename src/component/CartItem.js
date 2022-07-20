@@ -4,7 +4,6 @@ import {
   AiOutlinePlus,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
-// import BsTrash from "react-icons/bs";
 
 const CartItem = ({
   item: { qty, price, image, name },
@@ -36,7 +35,7 @@ const CartItem = ({
         <img src={image} alt="" />
       </div>
       <div className="name-quantity">
-        <p>{name}</p>
+        <p className="title">{name}</p>
         <p className="quantity">
           <span className="minus">
             <AiOutlineMinus onClick={minus} />

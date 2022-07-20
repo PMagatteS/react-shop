@@ -5,6 +5,7 @@ import React from "react";
 import Card from "./component/Card";
 import Cart from "./component/Cart";
 import Configbar from "./component/Configbar";
+import { testObj } from "./constant";
 
 function App() {
   const [items, setitems] = React.useState([]);
@@ -15,9 +16,19 @@ function App() {
   const displayCart = () => {
     setshowCart(!showCart);
   };
-
+  const cartStorage = localStorage.getItem("cart");
+  const storeCart = () => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  };
+  React.useEffect(() => {
+    storeCart();
+  }, [cartItems]);
   React.useEffect(() => {
     loadItems();
+    if (cartStorage) {
+      const parsed = JSON.parse(cartStorage);
+      setcartItems(parsed);
+    }
   }, []);
 
   const loadItems = async () => {
@@ -29,7 +40,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar func={setcontent} showCart={displayCart}></Navbar>
+      <Navbar
+        func={setcontent}
+        showCart={displayCart}
+        cartQuantity={cartItems}
+      ></Navbar>
       {showCart ? (
         <Cart
           showCart={displayCart}
@@ -54,10 +69,35 @@ function App() {
                 item={item}
                 cartItems={cartItems}
                 setcartItems={setcartItems}
+                storeItems={storeCart}
                 key={k}
               ></Card>
             ))
         )}
+        {/* <Card
+          item={testObj}
+          cartItems={cartItems}
+          setcartItems={setcartItems}
+          storeItems={storeCart}
+        ></Card>
+        <Card
+          item={testObj}
+          cartItems={cartItems}
+          setcartItems={setcartItems}
+          storeItems={storeCart}
+        ></Card>{" "}
+        <Card
+          item={testObj}
+          cartItems={cartItems}
+          setcartItems={setcartItems}
+          storeItems={storeCart}
+        ></Card>{" "}
+        <Card
+          item={testObj}
+          cartItems={cartItems}
+          setcartItems={setcartItems}
+          storeItems={storeCart}
+        ></Card> */}
       </div>
     </div>
   );
