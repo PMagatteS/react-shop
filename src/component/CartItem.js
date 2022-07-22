@@ -9,6 +9,7 @@ const CartItem = ({
   item: { qty, price, image, name },
   setquantity,
   items,
+  setsubTotal,
 }) => {
   const total = qty * price;
   const plus = () => {
@@ -16,6 +17,7 @@ const CartItem = ({
     const filterd = items.filter((item) => item !== itm);
     itm.qty++;
     setquantity([...filterd, itm]);
+    setsubTotal((sum) => sum + price);
   };
   const minus = () => {
     const itm = items.find((item) => item.name === name);
@@ -23,11 +25,13 @@ const CartItem = ({
     const filterd = items.filter((item) => item !== itm);
     itm.qty--;
     setquantity([...filterd, itm]);
+    setsubTotal((sum) => sum - price);
   };
   const deleteItem = () => {
     const itm = items.find((item) => item.name === name);
     const filterd = items.filter((item) => item !== itm);
     setquantity([...filterd]);
+    setsubTotal((sum) => sum - price * qty);
   };
   return (
     <div className="cart-items">
@@ -46,13 +50,11 @@ const CartItem = ({
           </span>
         </p>
       </div>
-      <div className="total">Total: ${total}</div>
+      <div className="total">Total: ${total.toFixed(2)}</div>
       <div className="delete">
         <AiOutlineCloseCircle
           onClick={deleteItem}
-          color="red"
-          size={30}
-          cursor="pointer"
+          className="delete-icon"
         ></AiOutlineCloseCircle>
       </div>
     </div>

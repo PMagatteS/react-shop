@@ -8,4 +8,3 @@ export const category = [
   "jewelery",
   "electronics",
 ];
-export const testObj = {title:'didiididiifif', price: 20, image: 'gear.png'}

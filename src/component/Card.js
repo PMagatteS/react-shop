@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import toast from "react-hot-toast";
 
-const Card = ({ item, cartItems, setcartItems }) => {
+const Card = ({ item, cartItems, setcartItems, setsubTotal }) => {
   const [quantity, setquantity] = React.useState(1);
   const plus = () => {
     setquantity((qty) => qty + 1);
@@ -23,8 +23,7 @@ const Card = ({ item, cartItems, setcartItems }) => {
     toast.success("succesfully added");
     e.target.parentElement.classList.add("buyed");
     setTimeout(() => e.target.parentElement.classList.remove("buyed"), 500);
-    // should be an id rather than name
-    console.log(e.target.parentElement);
+    // should be an id rather than name or title
     const check = cartItems.find((el) => el.name === item.title);
     if (check) {
       const filtered = cartItems.filter((el) => el !== check);
@@ -42,6 +41,7 @@ const Card = ({ item, cartItems, setcartItems }) => {
         },
       ]);
     }
+    setsubTotal((sum) => sum + item.price * quantity);
     setquantity(1);
   };
 
