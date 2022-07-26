@@ -11,6 +11,7 @@ const Card = ({ item, cartItems, setcartItems, setsubTotal }) => {
     if (quantity === 1) return;
     setquantity((qty) => qty - 1);
   };
+
   const addToCart = (e) => {
     const top = e.target.offsetParent.offsetTop;
     const left = e.target.offsetParent.offsetLeft;
